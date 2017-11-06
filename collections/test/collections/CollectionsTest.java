@@ -70,16 +70,28 @@ public class CollectionsTest {
      */
     @Test
     public void testBag2() {
+                
         System.out.println("bag2");
         int size = 0;
-        Collections instance = null;
-        ArrayList<String> expResult = null;
+        Collections instance = new Collections(null);
+        ArrayList<String> expResult = new ArrayList<String>();
         ArrayList<String> result = instance.bag2(size);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
+     @Test
+    public void testBag2_2() {
+                
+        System.out.println("bag2");
+        int size = 6;
+        Collections instance = new Collections(null);
+        ArrayList<String> expResult = new ArrayList<String>();
+        expResult.add("Number: 0");
+        expResult.add("Number: 1");
+        expResult.add("Number: 2");
+        ArrayList<String> result = instance.bag2(size);
+        assertEquals(expResult, result);
+    }
     /**
      * Test of bigBag method, of class Collections.
      */
