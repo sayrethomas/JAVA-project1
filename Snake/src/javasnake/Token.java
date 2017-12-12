@@ -18,7 +18,7 @@ public class Token {
     private int x, y, score;
     private int length = 7;
     private Snake snake;
-    
+    //New 
     public Token(Snake s){
         x = (int)(Math.random() * 390);
         y = (int)(Math.random() * 390);
@@ -30,6 +30,7 @@ public class Token {
     public int getY(){
         return y;
     }
+    //Change the Token location
     public void changePosition(){
         x = (int)(Math.random() * 390);
         y = (int)(Math.random() * 390);
@@ -45,7 +46,7 @@ public class Token {
         g.setColor(Color.green);
         g.fillRect(x, y, 10, 10);
     }
-   
+   //Collison rules for Token
     public boolean snakeCollision(){
         int snakeX = snake.getX() + 4;
         int snakeY = snake.getY() + 4;

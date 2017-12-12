@@ -13,6 +13,7 @@ import java.sql.Statement;
  */
 public class createLog {
 
+    //Connect to SQL
     private Connection connect() {
         // SQLite connection string
         String url = "jdbc:sqlite:C:/users/sayre/projects/JAVA-project1/Snake/db/snakeLogs.db";
@@ -24,7 +25,7 @@ public class createLog {
         }
         return conn;
     }
-    
+    //Create New Table
     public static void createNewTable() {
         // SQLite connection string
         String url = "jdbc:sqlite:C:/users/sayre/projects/JAVA-project1/Snake/db/snakeLogs.db";
@@ -45,7 +46,7 @@ public class createLog {
             System.out.println(e.getMessage());
         }
     }
-        
+    //Insert into DB    
     public void insert(int score, int length) {
         String sql = "INSERT INTO scores(score, length) VALUES(?,?)";
  
@@ -59,7 +60,7 @@ public class createLog {
             System.out.println(e.getMessage());
         }
     }
-    
+    //Return highest score from DB
      public String selectHigh(){
         String sql = "SELECT  MAX(score) FROM scores";
         String o = "";
@@ -76,7 +77,7 @@ public class createLog {
             return e.getMessage();
         }
     }
-     
+    //Clear entire Table
     public void delete() {
         String sql = "DELETE FROM scores";
  

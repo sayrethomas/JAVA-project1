@@ -29,6 +29,7 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
     int score, length, time;
     createLog log = new createLog();
     
+    //Initialize frame
     public void init(){
         this.resize(400, 420);
         gameOver = false;
@@ -43,7 +44,7 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
         thread = new Thread(this);
         thread.start();
     }
-    
+    //Paint Frame
     public void paint(Graphics g){
         gfx.setColor(Color.black);
         gfx.fillRect(0, 0, 400, 400);
@@ -53,14 +54,17 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
         gfx.drawString("Speed: " + time, 5, 415);
         gfx.drawString("Score: " + score, 150, 415);
         gfx.drawString("Press P to Pause", 280, 415);
+        //Pause menu
         if(!snake.isMoving){
             gfx.setColor(Color.red);
             gfx.drawString("< ^ > to Start", 280, 390);
         }
+        //Draw snakes and Tokens
         if(!gameOver){
             snake.draw(gfx);
             token.draw(gfx);
         }
+        //Draws GameOVer Menu
         else{
            
            gfx.setColor(Color.RED);
@@ -87,7 +91,7 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
     public void repaint(Graphics g){
         paint(g);
     }
-
+//Infinite Loops for game
     public void run() {
         for(;;){
             if(!gameOver){
@@ -97,6 +101,7 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
                 this.checkGameOver();
                 token.snakeCollision();
                  time = 100;
+                //Increments down Thread Sleep for Levels
                 for(int i = 1; i < 10; i++){
                     if(length >= (i * 40) + 7){
                                 time -= 10;
@@ -140,7 +145,7 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
    
     public void keyTyped(KeyEvent e) {
     }
-
+    //Key Presses
     public void keyPressed(KeyEvent e) {
         
         if(!snake.isMoving()){

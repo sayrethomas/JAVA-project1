@@ -21,6 +21,7 @@ public class Snake {
     boolean isMoving, elongate;
     final int STARTSIZE = 8, STARTX = 200, STARTY = 200;
     
+    //Create Snake
     public Snake(){
         snakePoints = new ArrayList<Point>();
         xDir = 0;
@@ -32,14 +33,14 @@ public class Snake {
             snakePoints.add(new Point(STARTX, STARTY + i * 8));
         }
     }
-
+    //Draw Snake
     public void draw(Graphics g){
         g.setColor(Color.white);
         for(Point p : snakePoints){
             g.fillRect(p.getX(), p.getY(), 8, 8);
         }
     }
-    
+    //Move rules
     public void move(){
         if(isMoving){
         Point temp = snakePoints.get(0);
@@ -49,7 +50,7 @@ public class Snake {
         for( int i =  snakePoints.size() - 1; i >= 1; i--){
             snakePoints.set(i, snakePoints.get(i-1));
         }
-        
+        //Increase Snake Length
         snakePoints.set(0, newStart);
         if(elongate){
             for(int i = 0; i < 7; i++){
@@ -58,7 +59,7 @@ public class Snake {
         }
         }
     }
-    
+    //Snake Collisions Rules
     public boolean snakeCollision(){
         int x = this.getX();
         int y = this.getY();
