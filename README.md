@@ -1,5 +1,15 @@
-# JAVA-project1
-Here is the HTTP link to my repository https://github.com/sayrethomas/JAVA-project1.git
+JAVA-project1
 
-I attmepted the Bus Signs problem from Kattis. I got pretty far but was stuck on how to parse Bufferread lines items into an integer
-for comparison and accurate sorting. Also created test case but still unsure if it accomplished anything.
+Here is the HTTP link to my repository https://github.com/sayrethomas/JAVA-project1.git Please Ignore Bus Signs Folder in every Branch!
+
+-----------------------------------------------------------------------------------------------------------------
+
+I have recieved a Grade for Junit, SQL and Collections assignment You will find two new Branches: Threads and Kattis
+
+Kattis updated to Run and has Tests
+
+Threads is Turned in
+
+You will also find my Android project at https://github.com/sayrethomas/Android.git
+
+Added Final Branch to Repo
