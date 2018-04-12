@@ -26,7 +26,10 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
     Snake snake;
     boolean gameOver, winner;
     Token token;
-    int score, length, time;
+    AI ai;
+    int score, length, time, level;
+    String speed[] = {"Molasses", "Slow Sloth", "Slow No-Mo", "Not Fast", "Getting There", "Need for Speed", "Ok Hold On", "Oh-oh", "Jesus Christ", "God Mode"};
+    String showSpeed;
     createLog log = new createLog();
     
     //Initialize frame
@@ -36,11 +39,13 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
         winner = false;
         score = 0;
         length = 0;
+        showSpeed = "Stopped";
         img = createImage(400, 420);
         gfx = img.getGraphics();
         this.addKeyListener(this);
         snake = new Snake();
         token = new Token(snake);
+        ai = new AI();
         thread = new Thread(this);
         thread.start();
     }
@@ -51,8 +56,9 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
         gfx.setColor(Color.white);
         gfx.fillRect(0, 400, 400, 420);
         gfx.setColor(Color.black);
-        gfx.drawString("Speed: " + time, 5, 415);
-        gfx.drawString("Score: " + score, 150, 415);
+        gfx.drawString("Wiser: " + ai.wiser(this, 3), 5, 415);
+        gfx.drawString("Speed: " + showSpeed, 60, 415);
+        gfx.drawString("Score: " + score, 200, 415);
         gfx.drawString("Press P to Pause", 280, 415);
         //Pause menu
         if(!snake.isMoving){
@@ -76,6 +82,7 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
            }
            gfx.drawString("- Score:" + token.getScore(), 165, 130);
            gfx.drawString("- Length: " + token.getLength(), 165, 150);
+           gfx.drawString("- Level: " + level, 165, 170);
            gfx.drawString("All Time High Score: ", 150, 200);
            gfx.drawString("- " + log.selectHigh(), 165, 220);
            gfx.drawString("Replay and Record: ", 150, 260);
@@ -98,13 +105,20 @@ public class SnakeGame extends Applet implements Runnable, KeyListener {
                 score = token.getScore();
                 length = token.getLength();
                 snake.move();
+                
+                if(ai.wiser(this, 3) == -10) {System.out.println("WARNING");};
+                
                 this.checkGameOver();
                 token.snakeCollision();
-                 time = 100;
+                time = 100;
+                level = 1;
+                showSpeed = speed[0];
                 //Increments down Thread Sleep for Levels
                 for(int i = 1; i < 10; i++){
                     if(length >= (i * 40) + 7){
                                 time -= 10;
+                                level++;
+                                showSpeed = speed[i];
                         }
                 }
                 if(time == 0){

@@ -55,7 +55,7 @@ public class createLog {
             pstmt.setInt(1, score);
             pstmt.setInt(2, length);
             pstmt.executeUpdate();
-            System.out.println("Inserted");
+            System.out.println("Inserted Score: " + score + " Legnth: " + length);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
