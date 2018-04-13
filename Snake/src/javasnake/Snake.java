@@ -60,9 +60,8 @@ public class Snake {
         }
     }
     //Snake Collisions Rules
-    public boolean snakeCollision(){
-        int x = this.getX();
-        int y = this.getY();
+    public boolean snakeCollision(int x, int y){
+
         for(int i = 1; i < snakePoints.size(); i++){
             if(snakePoints.get(i).getX() == x && snakePoints.get(i).getY() == y)
                 return true;
@@ -112,6 +111,19 @@ public class Snake {
     public boolean getElongate(){
         return elongate;
     }
-    
+    public int getDir(){
+        if(xDir == -1){
+            return 3;
+        }
+        else if(yDir == 1){
+            return 2;
+        }
+        else if(xDir == 1){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
 }
 

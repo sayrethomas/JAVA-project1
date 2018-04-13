@@ -47,15 +47,24 @@ public class Token {
         g.fillRect(x, y, 10, 10);
     }
    //Collison rules for Token
-    public boolean snakeCollision(){
-        int snakeX = snake.getX() + 4;
-        int snakeY = snake.getY() + 4;
+    public boolean snakeCollision(int i, int j){
+        int snakeX = i + 4;
+        int snakeY = j + 4;
         if (snakeX >= x-3 && snakeX <= (x + 12))
             if(snakeY >= y-3 && snakeY <= (y + 12)){
                 changePosition();
                 score+=50;
                 length+=8;
                 snake.setElongate(true);
+                return true;
+            }
+        return false;
+    }
+    public boolean treeCollision(int i, int j){
+        int snakeX = i + 4;
+        int snakeY = j + 4;
+        if (snakeX >= x-3 && snakeX <= (x + 12))
+            if(snakeY >= y-3 && snakeY <= (y + 12)){
                 return true;
             }
         return false;
